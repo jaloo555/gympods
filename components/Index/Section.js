@@ -1,4 +1,4 @@
-const Section = () => (
+const Section = (props) => (
     <div className="container">
         <h1 className="title">Fuel the body</h1>
         <p className="subtitle">Drop, Shake, Sip</p>
@@ -6,10 +6,9 @@ const Section = () => (
 
     <style jsx>{`
         .container {
-            color: white;
+            color: gray;
             margin: 0 3%;
-            position: absolute;
-            top: 35%;
+            line-height: 4em;
             font-size: 1.8vw;
         }
         .title {

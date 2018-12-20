@@ -5,13 +5,11 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 const Footer = (props) => (
     <footer id="footer">
         <div className="inner">
-            <div>
-                <ul>
-                    <li><a href="mailto:chisanch@outlook.com" className="icons"><FontAwesomeIcon icon={faEnvelope}/></a></li>
-                    <li><a href="#" className="icons"><FontAwesomeIcon icon={faFacebook}/></a></li>
-                    <li><a href="#" className="icons"><FontAwesomeIcon icon={faInstagram}/></a></li>
-                    <li><a href="https://github.com/jaloo555" className="icons"><FontAwesomeIcon icon={faGithub}/></a></li>
-                </ul>
+            <div className="iconContainer">
+                <a href="mailto:chisanch@outlook.com" className="icons"><FontAwesomeIcon icon={faEnvelope}/></a>
+                <a href="#" className="icons"><FontAwesomeIcon icon={faFacebook}/></a>
+                <a href="#" className="icons"><FontAwesomeIcon icon={faInstagram}/></a>
+                <a href="https://github.com/jaloo555" className="icons"><FontAwesomeIcon icon={faGithub}/></a>
             </div>
             <div className="copyright">
                 <p>&copy; Gympods Ltd.</p>
@@ -21,6 +19,11 @@ const Footer = (props) => (
             #footer {
                 background-color: #080808;
                 color: white;
+            }
+            .iconContainer {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
             }
             .icons {
                 text-decoration: none;
@@ -44,10 +47,6 @@ const Footer = (props) => (
                 
             }
             .copyright {
-                display: flex;
-                list-style: none;
-                margin-left: auto;
-                margin-right: auto;
                 font-style: italic;
                 color: gray;
             }

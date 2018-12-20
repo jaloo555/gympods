@@ -28,7 +28,7 @@ const Banner = (props) => (
                 font-size: 1.8vw;
             }
             .major-header > h1 {
-                font-size: 3em;
+                font-size: 50px;
                 margin: 0 0 0.2em;
                 font-weight: 700;
             }
@@ -36,17 +36,17 @@ const Banner = (props) => (
                 text-transform: uppercase;
             }
             .content > p {
-                margin: 0 0 1.5em;
+                margin: 0 0 40px;
                 font-size: 30px;
                 font-weight: 300;
             }
             a.explore-button {
-                border: 0.16em solid #FFFFFF;
+                border: 2px solid #FFFFFF;
                 padding: 0.5em 3em;
                 box-sizing: border-box;
                 text-decoration: none;
                 font-weight: 400;
-                font-size: 1.5em;
+                font-size: 20px;
                 color: #FFFFFF;
                 transition: all 0.15s;
                 border-color: white;
@@ -61,7 +61,6 @@ const Banner = (props) => (
             }
             @media all and (max-width:30em){
              a.explore-button{
-              display:block;
               margin:0.4em auto;
              }
             }
