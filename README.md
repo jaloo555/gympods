@@ -4,7 +4,7 @@ A no-compromise solution for the everyday athletes
 
 > Portable, Customizable and Convenient
 
-![website image](./static/screenshot.png)
+![website image](./frontend/static/screenshot.png)
 
 
 ## Developer notes
