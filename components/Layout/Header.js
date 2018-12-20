@@ -4,12 +4,14 @@ import { faShoppingCart,faUser,faSearch, faSignInAlt } from '@fortawesome/free-s
 
 const Header = (props) => (
     <nav id="header" className="alt">
+            <ul className="leftList">
+                <li className="links one"><a href="/">We Are</a></li>
+                <li className="links two"><a href="/">Pods</a></li>
+            </ul>
             <a className="logo" href="/">Gympods</a>
-            <ul>
-                <Link href="#"><li className="links"><a href="/">We Are</a></li></Link>
-                <li className="links"><a href="/">Products</a></li>
-                <li className="links"><a href="/">Gear</a></li>
-                <li className="links"><a href="/" className="signin-button">Sign in</a></li>
+            <ul className="rightList">
+                <li className="links three"><a href="/">Gear</a></li>
+                <li className="links cart"><a href="/">Cart</a></li>
             </ul>
         <style jsx>{`
             #header {
@@ -28,47 +30,64 @@ const Header = (props) => (
             }
             .logo {
                 font-size: 2.2em;
-                margin-left: 1.2em;
-                margin-right: auto;
+                justify-item: center;
+                margin: 0 auto;
                 font-family: 'Allerta Stencil', sans-serif;
                 text-transform: uppercase;
                 padding-top: 5px;
                 text-decoration: none;
             }
             ul > .links {
-                font-size: 20px;
-                padding-right: 25px;
+                font-size: 15px;
                 padding-bottom: 10px;
                 padding-top: 25px;
                 text-transform: uppercase;
                 font-weight: 600;
                 font-style: italic;
             }
+            .leftList > .links {
+                margin-left: 20px;  
+            }
+            .rightList > .links {
+                margin-right: 25px;  
+            }
+            // animating underline border
+            .links > a {
+                position: relative;
+            }
+            .links > a:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: tomato;
+                -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+                -webkit-transition: all 0.3s ease-in-out 0s;
+                transition: all 0.3s ease-in-out 0s;
+                visibility: hidden;
+                
+            }
+            .cart > a:before {
+                background-color: #fff3cd;
+            }
+            .links > a:hover:before {
+                visibility: visible;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+            .links > a:hover {
+
+            }
             a {
                 text-decoration: none;
                 color: inherit;
             }
-            a.signin-button {
-                border: 0.1em solid #FFFFFF;
-                border-radius: 5px;
-                padding: 0.4em 0.6em;
-                box-sizing: border-box;
-                font-weight: 300;
-                color: #000000;
-                background-color: white;
-                transition: all 0.15s;
-                border-color: black;
-                font-size: 15px;
-            }
-            a.signin-button:hover{
-             color:#DDDDDD;
-             border-color:#DDDDDD;
-            }
-            a.signin-button:active{
-             color:#BBBBBB;
-             border-color:#BBBBBB;
-            }
-            @media all and (max-width:762px){
+
+            // tablet/phone styles
+            @media all and (max-width:900px){
                 ul {
                     display: none;
                 }

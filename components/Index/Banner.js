@@ -1,5 +1,6 @@
 import Link from 'next/link'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 const Banner = (props) => (
     <section id="banner" className="major-section">
         <div className="inner">
@@ -7,8 +8,11 @@ const Banner = (props) => (
                 <h1>Never compromise.</h1>
             </header>
             <div className="content">
-                <p>Drop, shake, sip.</p>
-                <Link><a href="#one" className="explore-button">Explore Now</a></Link>
+                <p>Convenient. Portable. Customizable.</p>
+                <Link><a href="#one" className="explore-button">Shop Now</a></Link>
+            </div>
+            <div class="arrow bounce">
+                <a href="/"><FontAwesomeIcon icon={faAngleDown}/></a>
             </div>
         </div>
         <style jsx>{`
@@ -49,20 +53,32 @@ const Banner = (props) => (
                 font-size: 20px;
                 color: #FFFFFF;
                 transition: all 0.15s;
-                border-color: white;
+                border-color: tomato;
             }
             a.explore-button:hover{
-             color:#DDDDDD;
-             border-color:#DDDDDD;
+                color:#DDDDDD;
+                background-color: tomato;
+                -webkit-transition: all 0.3s ease-in-out 0s;
+                transition: all 0.3s ease-in-out 0s;
             }
             a.explore-button:active{
-             color:#BBBBBB;
-             border-color:#BBBBBB;
+                 color:#BBBBBB;
+                 border-color:#BBBBBB;
             }
+            .arrow {
+                margin-top: 40px;
+                color: white;
+                background-color: white;
+            }
+            .bounce {
+                -moz-animation: bounce 2s infinite;
+                -webkit-animation: bounce 2s infinite;
+                animation: bounce 2s infinite;
+              }
             @media all and (max-width:30em){
-             a.explore-button{
-              margin:0.4em auto;
-             }
+                 a.explore-button{
+                  margin:0.4em auto;
+                 }
             }
 
         `}
