@@ -7,8 +7,8 @@ const Section = (props) => (
         <style jsx>{`
             .container {
                 background-color: gray;
-                width: 100%;
-                height: 500px;
+                width: 100vw;
+                height: 60vh;
                 font-size: 30px;
                 text-align: center;
             }

@@ -12,7 +12,7 @@ const Banner = (props) => (
                 <Link href="/"><a href="/" className="explore-button">Shop Now</a></Link>
             </div>
             <div className="arrow bounce">
-                <a href="/"><FontAwesomeIcon icon={faAngleDown}/></a>
+                <FontAwesomeIcon icon={faAngleDown}/>
             </div>
         </div>
         <style jsx>{`
@@ -22,6 +22,7 @@ const Banner = (props) => (
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
+                background-attachment: fixed;
                 display: flex;
                 color: white;
                 justify-content: center;
@@ -30,11 +31,15 @@ const Banner = (props) => (
                 font-family: 'Roboto', sans-serif;
                 overflow: hidden;
                 font-size: 1.8vw;
+                position: relative;
+                margin: 0;
+                padding: 0;
             }
             .major-header > h1 {
                 font-size: 50px;
                 margin: 0 0 0.2em;
                 font-weight: 700;
+                padding-bottom: 20px;
             }
             .content {
                 text-transform: uppercase;
@@ -66,13 +71,28 @@ const Banner = (props) => (
                  border-color:#BBBBBB;
             }
             .arrow {
-                margin-top: 40px;
+                cursor: pointer;
+                position: absolute;
                 color: white;
+                bottom: 2rem;
+                left: 50%;
+                font-size: 35px;
             }
             .bounce {
                 -moz-animation: bounce 2s infinite;
                 -webkit-animation: bounce 2s infinite;
                 animation: bounce 2s infinite;
+            }
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                  transform: translateY(0);
+                }
+                40% {
+                  transform: translateY(-30px);
+                }
+                60% {
+                  transform: translateY(-15px);
+                }
               }
             @media all and (max-width:30em){
                  a.explore-button{

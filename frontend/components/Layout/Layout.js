@@ -1,12 +1,20 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
+import App, {Container} from "next/app"
 import Header from './Header'
 import Footer from './Footer'
 
 class Layout extends React.Component {
     constructor(props) {
         super(props)
+    }
+
+    static async getInitialProps({Component, router, ctx}) {
+        let pageProps = {}
+        if (Component.getInitialProps) {
+            pageProps = await Component.getInitialProps(ctx)
+        }
+        return {page}
     }
 
     render() {

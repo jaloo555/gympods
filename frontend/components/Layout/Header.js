@@ -18,6 +18,7 @@ const Header = (props) => (
                 background-color: rgba(256,256,256,1.0);
                 color: black;
                 position: fixed;
+                z-index: 1;
                 width: 100vw;
                 transform: 0.3s;
                 display: flex;
