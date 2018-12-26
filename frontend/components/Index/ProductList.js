@@ -1,15 +1,9 @@
 import gql from "graphql-tag"
 import Link from "next/link"
 import {graphql} from "react-apollo"
+import ProductCard from "./ProductCard"
 import {
-  Card,
-  CardBody,
-  CardImg,
-  CardGroup,
-  CardColumns,
-  CardSubtitle,
-  CardText,
-  CardTitle,
+  Container,
   Col,
   Row
 } from "reactstrap"
@@ -24,41 +18,20 @@ const ProductList = (
         query.name.toLowerCase().includes(search)
       );
       if (searchQuery.length != 0) {
+        let productCards = searchQuery.map(res=>(
+          <Col sm="4">
+            <ProductCard key={res._id} res={res}/>
+          </Col>
+        ))
         return (
         <div className="main" id="productList">
           <h1 className="title">Our Products</h1>
-          <div className="h-100 cards">
-            <CardGroup>
-              {searchQuery.map(res => (
-                <Card
-                  style={{ width: "30%", margin: "0 10px" }}
-                  body
-                  className="text-center"
-                  key={res._id}
-                >
-                  <CardImg
-                    top={true}
-                    style={{ height: 350 }}
-                    src={`http://localhost:1337${res.image.url}`}
-                  />
-                  <CardBody>
-                    <CardTitle>{res.name}</CardTitle>
-                    <CardText>{res.description}</CardText>
-                  </CardBody>
-                  <div className="card-footer">
-                    <Link
-                      as={`/supplements/${res._id}`}
-                      href={`/supplements?id=${res._id}`}
-                    >
-                      <a className="btn btn-primary">View</a>
-                    </Link>
-                  </div>
-                </Card>
-              ))}
-            </CardGroup>
-          </div>
-          <style jsx global>{`
-            
+          <Container fluid>
+            <Row>
+              {productCards}
+            </Row>
+          </Container>
+          <style jsx>{`
             .main {
               font-family: 'Bai Jamjuree', sans-serif;
               margin: 40px 20px 20px 20px;

@@ -1,6 +1,59 @@
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart,faUser,faSearch, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+
+// class Header extends React.Component {
+//     constructor(props) {
+//         super(props)
+//         this.toggle = this.toggle.bind(this)
+//         this.state = {
+//             isOpen: false
+//         }
+//     }
+//     toggle() {
+//         this.setState({
+//             isOpen: !this.state.isOpen
+//         })
+//     }
+//     render() {
+//         return (
+//             <nav class="navbar navbar-default" role="navigation">
+//             <div class="navbar-header">
+//             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+//                 <span class="sr-only">Toggle navigation</span>
+//                 <span class="icon-bar"></span>
+//                 <span class="icon-bar"></span>
+//                 <span class="icon-bar"></span>
+//             </button>
+            
+//             </div>
+//             <a class="navbar-brand" href="#">Brand</a>
+//             <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            
+//             <ul class="nav navbar-nav navbar-left">
+//                 <li><a href="#">Menu</a></li>
+//                 <li><a href="#">Menu</a></li>
+//             </ul>
+//             <ul class="nav navbar-nav navbar-right">
+//                 <li><a href="#">Link</a></li>
+//                 <li><a href="#">Link</a></li>
+//                 <li><a href="#">Link</a></li>
+//                 <li class="dropdown">
+//                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+//                 <ul class="dropdown-menu">
+//                     <li><a href="#">Action</a></li>
+//                     <li><a href="#">Another action</a></li>
+//                     <li><a href="#">Something else here</a></li>
+//                     <li class="divider"></li>
+//                     <li><a href="#">Separated link</a></li>
+//                 </ul>
+//                 </li>
+//             </ul>
+//             </div>
+//         </nav>
+//         )
+//     }
+// }
 
 const Header = (props) => (
     <nav id="header" className="alt">
@@ -73,15 +126,12 @@ const Header = (props) => (
                 
             }
             .cart > a:before {
-                background-color: #fff3cd;
+                background-color: #00b2f6;
             }
             .links > a:hover:before {
                 visibility: visible;
                 -webkit-transform: scaleX(1);
                 transform: scaleX(1);
-            }
-            .links > a:hover {
-
             }
             a {
                 text-decoration: none;
