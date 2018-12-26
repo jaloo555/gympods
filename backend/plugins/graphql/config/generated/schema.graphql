@@ -6,6 +6,14 @@ type createRolePayload {
   role: UsersPermissionsRole
 }
 
+input createSizeInput {
+  data: SizeInput
+}
+
+type createSizePayload {
+  size: Size
+}
+
 input createSupplementInput {
   data: SupplementInput
 }
@@ -33,6 +41,14 @@ input deleteRoleInput {
 
 type deleteRolePayload {
   role: UsersPermissionsRole
+}
+
+input deleteSizeInput {
+  where: InputID
+}
+
+type deleteSizePayload {
+  size: Size
 }
 
 input deleteSupplementInput {
@@ -73,9 +89,12 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Supplement | createSupplementPayload | updateSupplementPayload | deleteSupplementPayload | SupplementConnection | SupplementAggregator | SupplementAggregatorSum | SupplementAggregatorAvg | SupplementAggregatorMin | SupplementAggregatorMax | SupplementGroupBy | SupplementConnection_id | SupplementConnectionCreatedAt | SupplementConnectionUpdatedAt | SupplementConnectionName | SupplementConnectionPrice | SupplementConnectionDescription | SupplementConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Size | createSizePayload | updateSizePayload | deleteSizePayload | SizeConnection | SizeAggregator | SizeAggregatorSum | SizeAggregatorAvg | SizeAggregatorMin | SizeAggregatorMax | SizeGroupBy | SizeConnection_id | SizeConnectionCreatedAt | SizeConnectionUpdatedAt | SizeConnectionSupplement | SizeConnectionPrice | SizeConnectionServings | Supplement | createSupplementPayload | updateSupplementPayload | deleteSupplementPayload | SupplementConnection | SupplementAggregator | SupplementAggregatorSum | SupplementAggregatorAvg | SupplementAggregatorMin | SupplementAggregatorMax | SupplementGroupBy | SupplementConnection_id | SupplementConnectionCreatedAt | SupplementConnectionUpdatedAt | SupplementConnectionName | SupplementConnectionPrice | SupplementConnectionDescription | SupplementConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createSize(input: createSizeInput): createSizePayload
+  updateSize(input: updateSizeInput): updateSizePayload
+  deleteSize(input: deleteSizeInput): deleteSizePayload
   createSupplement(input: createSupplementInput): createSupplementPayload
   updateSupplement(input: updateSupplementInput): updateSupplementPayload
   deleteSupplement(input: deleteSupplementInput): deleteSupplementPayload
@@ -95,6 +114,9 @@ type Mutation {
 }
 
 type Query {
+  size(id: ID!): Size
+  sizes(sort: String, limit: Int, start: Int, where: JSON): [Size]
+  sizesConnection(sort: String, limit: Int, start: Int, where: JSON): SizeConnection
   supplement(id: ID!): Supplement
   supplements(sort: String, limit: Int, start: Int, where: JSON): [Supplement]
   supplementsConnection(sort: String, limit: Int, start: Int, where: JSON): SupplementConnection
@@ -121,6 +143,94 @@ input RoleInput {
   users: [ID]
 }
 
+type Size {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  supplement: Supplement
+  price: Float
+  servings: Int
+}
+
+type SizeAggregator {
+  count: Int
+  sum: SizeAggregatorSum
+  avg: SizeAggregatorAvg
+  min: SizeAggregatorMin
+  max: SizeAggregatorMax
+}
+
+type SizeAggregatorAvg {
+  price: Float
+  servings: Float
+}
+
+type SizeAggregatorMax {
+  price: Float
+  servings: Float
+}
+
+type SizeAggregatorMin {
+  price: Float
+  servings: Float
+}
+
+type SizeAggregatorSum {
+  price: Float
+  servings: Float
+}
+
+type SizeConnection {
+  values: [Size]
+  groupBy: SizeGroupBy
+  aggregate: SizeAggregator
+}
+
+type SizeConnection_id {
+  key: ID
+  connection: SizeConnection
+}
+
+type SizeConnectionCreatedAt {
+  key: DateTime
+  connection: SizeConnection
+}
+
+type SizeConnectionPrice {
+  key: Float
+  connection: SizeConnection
+}
+
+type SizeConnectionServings {
+  key: Int
+  connection: SizeConnection
+}
+
+type SizeConnectionSupplement {
+  key: ID
+  connection: SizeConnection
+}
+
+type SizeConnectionUpdatedAt {
+  key: DateTime
+  connection: SizeConnection
+}
+
+type SizeGroupBy {
+  _id: [SizeConnection_id]
+  createdAt: [SizeConnectionCreatedAt]
+  updatedAt: [SizeConnectionUpdatedAt]
+  supplement: [SizeConnectionSupplement]
+  price: [SizeConnectionPrice]
+  servings: [SizeConnectionServings]
+}
+
+input SizeInput {
+  supplement: ID
+  price: Float
+  servings: Int
+}
+
 type Supplement {
   _id: ID!
   createdAt: DateTime!
@@ -129,6 +239,7 @@ type Supplement {
   price: Float
   description: String
   image: UploadFile
+  sizes(sort: String, limit: Int, start: Int, where: JSON): [Size]
 }
 
 type SupplementAggregator {
@@ -211,6 +322,7 @@ input SupplementInput {
   price: Float
   description: String
   image: ID
+  sizes: [ID]
 }
 
 input updateRoleInput {
@@ -220,6 +332,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateSizeInput {
+  where: InputID
+  data: SizeInput
+}
+
+type updateSizePayload {
+  size: Size
 }
 
 input updateSupplementInput {

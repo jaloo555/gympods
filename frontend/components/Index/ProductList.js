@@ -25,8 +25,9 @@ const ProductList = (
       );
       if (searchQuery.length != 0) {
         return (
-        <div>
-          <div className="h-100">
+        <div className="main" id="productList">
+          <h1 className="title">Our Products</h1>
+          <div className="h-100 cards">
             <CardGroup>
               {searchQuery.map(res => (
                 <Card
@@ -37,7 +38,7 @@ const ProductList = (
                 >
                   <CardImg
                     top={true}
-                    style={{ height: 375 }}
+                    style={{ height: 350 }}
                     src={`http://localhost:1337${res.image.url}`}
                   />
                   <CardBody>
@@ -56,8 +57,19 @@ const ProductList = (
               ))}
             </CardGroup>
           </div>
-          <style jsx>{`
-
+          <style jsx global>{`
+            
+            .main {
+              font-family: 'Bai Jamjuree', sans-serif;
+              margin: 40px 20px 20px 20px;
+            }
+            .title {
+              text-align: center;
+              margin: 20px;
+            }
+            .cards {
+              display: flex;
+            }
           `}
           </style>
         </div>

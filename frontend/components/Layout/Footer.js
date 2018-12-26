@@ -17,8 +17,8 @@ const Footer = (props) => (
         </div>
         <style jsx>{`
             #footer {
-                background-color: #080808;
-                color: white;
+                background-color: white;
+                color: black;
             }
             .iconContainer {
                 margin-left: auto;
@@ -27,7 +27,7 @@ const Footer = (props) => (
             }
             .icons {
                 text-decoration: none;
-                color: white;
+                color: black;
                 font-size: 30px;
                 margin: 0;
                 padding-right: 20px;

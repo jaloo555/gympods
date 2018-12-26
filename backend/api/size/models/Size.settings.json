@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "size",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "supplement": {
+      "model": "supplement",
+      "via": "sizes",
+      "dominant": true
+    },
+    "price": {
+      "default": "",
+      "type": "decimal"
+    },
+    "servings": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

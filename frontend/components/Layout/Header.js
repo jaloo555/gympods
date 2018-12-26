@@ -10,9 +10,10 @@ const Header = (props) => (
             </ul>
             <a className="logo" href="/">Gympods</a>
             <ul className="rightList">
-                <li className="links three"><a href="/">Gear</a></li>
-                <li className="links cart"><a href="/">Cart</a></li>
+                <li className="links cart"><a href="/">Cart(0)</a></li>
+                <li className="links three"><a href="/">Login</a></li>
             </ul>
+            
         <style jsx>{`
             #header {
                 background-color: rgba(256,256,256,1.0);
@@ -47,10 +48,10 @@ const Header = (props) => (
                 font-style: italic;
             }
             .leftList > .links {
-                margin-left: 20px;  
+                margin-left: 25px;  
             }
             .rightList > .links {
-                margin-right: 25px;  
+                margin-right: 20px;  
             }
             // animating underline border
             .links > a {

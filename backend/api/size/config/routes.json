@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/sizes",
+      "handler": "Size.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sizes/count",
+      "handler": "Size.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sizes/:_id",
+      "handler": "Size.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sizes",
+      "handler": "Size.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/sizes/:_id",
+      "handler": "Size.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/sizes/:_id",
+      "handler": "Size.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
