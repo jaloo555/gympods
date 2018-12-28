@@ -19,7 +19,7 @@ const ProductList = (
       );
       if (searchQuery.length != 0) {
         let productCards = searchQuery.map(res=>(
-          <Col sm="4">
+          <Col sm="4" key={res._id}>
             <ProductCard key={res._id} res={res}/>
           </Col>
         ))

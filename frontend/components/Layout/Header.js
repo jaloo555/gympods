@@ -2,59 +2,6 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
-// class Header extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.toggle = this.toggle.bind(this)
-//         this.state = {
-//             isOpen: false
-//         }
-//     }
-//     toggle() {
-//         this.setState({
-//             isOpen: !this.state.isOpen
-//         })
-//     }
-//     render() {
-//         return (
-//             <nav class="navbar navbar-default" role="navigation">
-//             <div class="navbar-header">
-//             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-//                 <span class="sr-only">Toggle navigation</span>
-//                 <span class="icon-bar"></span>
-//                 <span class="icon-bar"></span>
-//                 <span class="icon-bar"></span>
-//             </button>
-            
-//             </div>
-//             <a class="navbar-brand" href="#">Brand</a>
-//             <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            
-//             <ul class="nav navbar-nav navbar-left">
-//                 <li><a href="#">Menu</a></li>
-//                 <li><a href="#">Menu</a></li>
-//             </ul>
-//             <ul class="nav navbar-nav navbar-right">
-//                 <li><a href="#">Link</a></li>
-//                 <li><a href="#">Link</a></li>
-//                 <li><a href="#">Link</a></li>
-//                 <li class="dropdown">
-//                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-//                 <ul class="dropdown-menu">
-//                     <li><a href="#">Action</a></li>
-//                     <li><a href="#">Another action</a></li>
-//                     <li><a href="#">Something else here</a></li>
-//                     <li class="divider"></li>
-//                     <li><a href="#">Separated link</a></li>
-//                 </ul>
-//                 </li>
-//             </ul>
-//             </div>
-//         </nav>
-//         )
-//     }
-// }
-
 const Header = (props) => (
     <nav id="header" className="alt">
             <ul className="leftList">
@@ -66,7 +13,6 @@ const Header = (props) => (
                 <li className="links cart"><a href="/">Cart(0)</a></li>
                 <li className="links three"><a href="/">Login</a></li>
             </ul>
-            
         <style jsx>{`
             #header {
                 background-color: rgba(256,256,256,1.0);
@@ -139,7 +85,7 @@ const Header = (props) => (
             }
 
             // tablet/phone styles
-            @media all and (max-width:900px){
+            @media all and (max-width:900px)  {
                 ul {
                     display: none;
                 }

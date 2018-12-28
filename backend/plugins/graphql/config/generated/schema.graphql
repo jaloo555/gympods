@@ -67,6 +67,20 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+enum ENUM_SUPPLEMENT_FLAVORS {
+  dutch
+  chocolate
+  natural
+  vanilla
+  salted
+  caramel
+  banana
+  cream
+  coffee
+  cookies
+  and
+}
+
 input FileInput {
   name: String!
   hash: String!
@@ -89,7 +103,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Size | createSizePayload | updateSizePayload | deleteSizePayload | SizeConnection | SizeAggregator | SizeAggregatorSum | SizeAggregatorAvg | SizeAggregatorMin | SizeAggregatorMax | SizeGroupBy | SizeConnection_id | SizeConnectionCreatedAt | SizeConnectionUpdatedAt | SizeConnectionSupplement | SizeConnectionPrice | SizeConnectionServings | Supplement | createSupplementPayload | updateSupplementPayload | deleteSupplementPayload | SupplementConnection | SupplementAggregator | SupplementAggregatorSum | SupplementAggregatorAvg | SupplementAggregatorMin | SupplementAggregatorMax | SupplementGroupBy | SupplementConnection_id | SupplementConnectionCreatedAt | SupplementConnectionUpdatedAt | SupplementConnectionName | SupplementConnectionPrice | SupplementConnectionDescription | SupplementConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Size | createSizePayload | updateSizePayload | deleteSizePayload | SizeConnection | SizeAggregator | SizeAggregatorSum | SizeAggregatorAvg | SizeAggregatorMin | SizeAggregatorMax | SizeGroupBy | SizeConnection_id | SizeConnectionCreatedAt | SizeConnectionUpdatedAt | SizeConnectionSupplement | SizeConnectionPrice | SizeConnectionServings | Supplement | createSupplementPayload | updateSupplementPayload | deleteSupplementPayload | SupplementConnection | SupplementAggregator | SupplementAggregatorSum | SupplementAggregatorAvg | SupplementAggregatorMin | SupplementAggregatorMax | SupplementGroupBy | SupplementConnection_id | SupplementConnectionCreatedAt | SupplementConnectionUpdatedAt | SupplementConnectionName | SupplementConnectionPrice | SupplementConnectionDescription | SupplementConnectionImage | SupplementConnectionFlavors | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createSize(input: createSizeInput): createSizePayload
@@ -239,6 +253,7 @@ type Supplement {
   price: Float
   description: String
   image: UploadFile
+  flavors: ENUM_SUPPLEMENT_FLAVORS
   sizes(sort: String, limit: Int, start: Int, where: JSON): [Size]
 }
 
@@ -287,6 +302,11 @@ type SupplementConnectionDescription {
   connection: SupplementConnection
 }
 
+type SupplementConnectionFlavors {
+  key: String
+  connection: SupplementConnection
+}
+
 type SupplementConnectionImage {
   key: ID
   connection: SupplementConnection
@@ -315,6 +335,7 @@ type SupplementGroupBy {
   price: [SupplementConnectionPrice]
   description: [SupplementConnectionDescription]
   image: [SupplementConnectionImage]
+  flavors: [SupplementConnectionFlavors]
 }
 
 input SupplementInput {
@@ -323,6 +344,7 @@ input SupplementInput {
   description: String
   image: ID
   sizes: [ID]
+  flavors: ENUM_SUPPLEMENT_FLAVORS
 }
 
 input updateRoleInput {

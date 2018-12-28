@@ -1,6 +1,5 @@
 import React from 'react'
-import Head from 'next/head'
-import App, {Container} from "next/app"
+import Heading from './Heading'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -20,7 +19,7 @@ class Layout extends React.Component {
     render() {
         return (
             <div>
-                <Head>
+                {/* <Head>
                     <title>Gympods</title>
                     <meta name="description" content="Gympods" />
                     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossOrigin="anonymous"/>
@@ -28,8 +27,8 @@ class Layout extends React.Component {
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
                     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" />
                     <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Bai+Jamjuree" rel="stylesheet"/>                    
-                </Head>
-
+                </Head> */}
+                <Heading/>
                 <div id="wrapper">
                     <Header />
                     {this.props.children}

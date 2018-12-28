@@ -10,7 +10,7 @@ const Banner = (props) => (
                 </header>
                 <div className="content">
                     <p>Convenient. Portable. Customizable.</p>
-                    <Link href="/product"><a href="/" className="explore-button">Shop Now</a></Link>
+                    <Link href="#productList"><a href="/" className="explore-button">Shop Now</a></Link>
                 </div>
                 <div className="arrow bounce">
                     <Link href="#section"><FontAwesomeIcon icon={faAngleDown}/></Link>

@@ -7,9 +7,6 @@ A no-compromise solution for the everyday athletes
 ![website image](./frontend/static/screenshot.png)
 
 
-## Developer notes
-  - Navbar resizing
-  - Signin button resize
-  - Banner header resize
-  - Footer alignment
-  - Features tab
+## Dev notes
+  ### About to implement
+  https://codyhouse.co/gem/css-product-quick-view

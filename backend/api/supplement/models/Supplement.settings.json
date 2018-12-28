@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "supplement",
   "info": {
     "name": "supplement",
     "description": ""
@@ -30,6 +30,19 @@
     "sizes": {
       "collection": "size",
       "via": "supplement"
+    },
+    "flavors": {
+      "default": "",
+      "type": "enumeration",
+      "enum": [
+        "dutch chocolate",
+        " natural vanilla",
+        " salted caramel",
+        " banana cream",
+        " coffee",
+        " cookies and cream",
+        " "
+      ]
     }
   }
 }
