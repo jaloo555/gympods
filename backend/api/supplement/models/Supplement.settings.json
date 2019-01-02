@@ -32,17 +32,8 @@
       "via": "supplement"
     },
     "flavors": {
-      "default": "",
-      "type": "enumeration",
-      "enum": [
-        "dutch chocolate",
-        " natural vanilla",
-        " salted caramel",
-        " banana cream",
-        " coffee",
-        " cookies and cream",
-        " "
-      ]
+      "collection": "flavors",
+      "via": "supplement"
     }
   }
 }

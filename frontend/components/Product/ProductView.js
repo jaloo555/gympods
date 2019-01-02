@@ -1,5 +1,4 @@
 import {
-  Dropdown, 
   Container,
   Carousel,
   CarouselCaption,
@@ -92,6 +91,54 @@ class ImageViewer extends React.Component {
 
 }
 
+class Selector extends React.Component {
+  state = {
+    selectedPrice: this.props.sizes[0].price,
+    selectedFlavor: this.props.sizes[0].flavors,
+  }
+
+  constructor(props) {
+    super(props)
+    this.handlePriceChange = this.handlePriceChange.bind(this)
+    this.handleFlavorChange = this.handleFlavorChange.bind(this)
+  }
+
+  handlePriceChange(e) {
+    this.setState({
+      selectedPrice: e.target.value,
+    })
+  }
+
+  handleFlavorChange(e) {
+    this.setState({
+      selectedFlavor: e.target.value
+    })
+  }
+
+  render() {
+    const servingSelector = this.props.sizes.map((size)=> (
+      <option value={size.price} key={size.servings}>{size.servings} Servings</option>
+    ))
+    const flavorSelector = this.props.sizes.map((size)=> (
+      <option>{size.flavors}</option>
+    ))
+    return (
+      <div>
+        {/* Price */}
+        <select value={this.state.selectedPrice}
+          onChange={this.handlePriceChange} className="servingSelector">
+          {servingSelector}
+        </select>
+        {/* Flavor */}
+        <select value={this.state.selectedFlavor}
+          onChange={this.handleFlavorChange} className="flavorSelector">
+          {servingSelector}
+        </select>
+      </div>
+    )
+  }
+}
+
 class ProductView extends React.Component {
   constructor(props) {
     super(props)
@@ -106,16 +153,16 @@ class ProductView extends React.Component {
         <div className="imgView">
           <ImageViewer/>
         </div>
-        <div className="prices">
-          {this.props.supplement.sizes.map(res=>(
-            <div key={this.props.supplement.id}>
-              <h1>{res.servings}: {res.price}</h1>
-            </div>
-            ))}
+        <div className="selection">
+          <Selector sizes={this.props.supplement.sizes}/>
+          {console.log(this.props.supplement.flavors)}
+          {/* <FlavorSelector flavors={this.props.supplement.flavors}/> */}
         </div>
         <style jsx>{`
           .imgView {
             background-color: gray;
+            width: 50%;
+            height: 50%;
           }
         `}
         </style>

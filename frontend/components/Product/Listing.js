@@ -3,7 +3,7 @@ import {graphql, Query} from 'react-apollo'
 import {Container} from 'reactstrap'
 import ProductView from './ProductView'
 
-const Listing = ({id, data}) => {
+const Listing = ({id}) => {
   return (
     <Query query={GET_LISTING} variables={{id}}>
       {({loading, error, data}) => {
@@ -13,9 +13,8 @@ const Listing = ({id, data}) => {
         return (
           <Container fluid className="mainContainer">
             <ProductView supplement={supplement}/>
-
+            {console.log(supplement)}
             {/* gotta change size of carousel */}
-
             <style jsx >{`
               .mainContainer {
                 padding-top: 65px;
@@ -36,13 +35,11 @@ const GET_LISTING = gql`
       name
       _id
       description
-      image{
-        url
-      }
       sizes {
         price
         servings
       }
+      flavors
     }
   }
 `

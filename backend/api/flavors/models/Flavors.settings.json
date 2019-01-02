@@ -1,0 +1,37 @@
+{
+  "connection": "default",
+  "collectionName": "flavors",
+  "info": {
+    "name": "flavors",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "supplement": {
+      "model": "supplement",
+      "via": "flavors"
+    },
+    "Cinammon_Bun": {
+      "default": false,
+      "type": "boolean"
+    },
+    "Strawberry_Cream": {
+      "default": false,
+      "type": "boolean"
+    },
+    "Natural_Vanilla": {
+      "default": false,
+      "type": "boolean"
+    },
+    "Dutch_Chocolate": {
+      "default": false,
+      "type": "boolean"
+    },
+    "Salted_Caramel": {
+      "default": false,
+      "type": "boolean"
+    }
+  }
+}

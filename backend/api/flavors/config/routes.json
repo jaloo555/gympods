@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/flavors",
+      "handler": "Flavors.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/flavors/count",
+      "handler": "Flavors.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/flavors/:_id",
+      "handler": "Flavors.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/flavors",
+      "handler": "Flavors.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/flavors/:_id",
+      "handler": "Flavors.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/flavors/:_id",
+      "handler": "Flavors.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

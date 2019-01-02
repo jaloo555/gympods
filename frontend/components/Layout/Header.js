@@ -83,6 +83,9 @@ const Header = (props) => (
                 text-decoration: none;
                 color: inherit;
             }
+            .links > a.hover {
+                color: inherit;
+            }
 
             // tablet/phone styles
             @media all and (max-width:900px)  {

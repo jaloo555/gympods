@@ -1,3 +1,11 @@
+input createFlavorsInput {
+  data: FlavorsInput
+}
+
+type createFlavorsPayload {
+  flavor: Flavors
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -35,6 +43,14 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteFlavorsInput {
+  where: InputID
+}
+
+type deleteFlavorsPayload {
+  flavor: Flavors
+}
+
 input deleteRoleInput {
   where: InputID
 }
@@ -67,20 +83,6 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-enum ENUM_SUPPLEMENT_FLAVORS {
-  dutch
-  chocolate
-  natural
-  vanilla
-  salted
-  caramel
-  banana
-  cream
-  coffee
-  cookies
-  and
-}
-
 input FileInput {
   name: String!
   hash: String!
@@ -94,6 +96,94 @@ input FileInput {
   related: [ID]
 }
 
+type Flavors {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  supplement: Supplement
+  Cinammon_Bun: Boolean
+  Strawberry_Cream: Boolean
+  Natural_Vanilla: Boolean
+  Dutch_Chocolate: Boolean
+  Salted_Caramel: Boolean
+}
+
+type FlavorsAggregator {
+  count: Int
+}
+
+type FlavorsConnection {
+  values: [Flavors]
+  groupBy: FlavorsGroupBy
+  aggregate: FlavorsAggregator
+}
+
+type FlavorsConnection_id {
+  key: ID
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionCinammon_Bun {
+  key: Boolean
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionCreatedAt {
+  key: DateTime
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionDutch_Chocolate {
+  key: Boolean
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionNatural_Vanilla {
+  key: Boolean
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionSalted_Caramel {
+  key: Boolean
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionStrawberry_Cream {
+  key: Boolean
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionSupplement {
+  key: ID
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionUpdatedAt {
+  key: DateTime
+  connection: FlavorsConnection
+}
+
+type FlavorsGroupBy {
+  _id: [FlavorsConnection_id]
+  createdAt: [FlavorsConnectionCreatedAt]
+  updatedAt: [FlavorsConnectionUpdatedAt]
+  supplement: [FlavorsConnectionSupplement]
+  Cinammon_Bun: [FlavorsConnectionCinammon_Bun]
+  Strawberry_Cream: [FlavorsConnectionStrawberry_Cream]
+  Natural_Vanilla: [FlavorsConnectionNatural_Vanilla]
+  Dutch_Chocolate: [FlavorsConnectionDutch_Chocolate]
+  Salted_Caramel: [FlavorsConnectionSalted_Caramel]
+}
+
+input FlavorsInput {
+  supplement: ID
+  Cinammon_Bun: Boolean
+  Strawberry_Cream: Boolean
+  Natural_Vanilla: Boolean
+  Dutch_Chocolate: Boolean
+  Salted_Caramel: Boolean
+}
+
 input InputID {
   id: ID!
 }
@@ -103,9 +193,12 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Size | createSizePayload | updateSizePayload | deleteSizePayload | SizeConnection | SizeAggregator | SizeAggregatorSum | SizeAggregatorAvg | SizeAggregatorMin | SizeAggregatorMax | SizeGroupBy | SizeConnection_id | SizeConnectionCreatedAt | SizeConnectionUpdatedAt | SizeConnectionSupplement | SizeConnectionPrice | SizeConnectionServings | Supplement | createSupplementPayload | updateSupplementPayload | deleteSupplementPayload | SupplementConnection | SupplementAggregator | SupplementAggregatorSum | SupplementAggregatorAvg | SupplementAggregatorMin | SupplementAggregatorMax | SupplementGroupBy | SupplementConnection_id | SupplementConnectionCreatedAt | SupplementConnectionUpdatedAt | SupplementConnectionName | SupplementConnectionPrice | SupplementConnectionDescription | SupplementConnectionImage | SupplementConnectionFlavors | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Flavors | createFlavorsPayload | updateFlavorsPayload | deleteFlavorsPayload | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionSupplement | FlavorsConnectionCinammon_Bun | FlavorsConnectionStrawberry_Cream | FlavorsConnectionNatural_Vanilla | FlavorsConnectionDutch_Chocolate | FlavorsConnectionSalted_Caramel | Size | createSizePayload | updateSizePayload | deleteSizePayload | SizeConnection | SizeAggregator | SizeAggregatorSum | SizeAggregatorAvg | SizeAggregatorMin | SizeAggregatorMax | SizeGroupBy | SizeConnection_id | SizeConnectionCreatedAt | SizeConnectionUpdatedAt | SizeConnectionSupplement | SizeConnectionPrice | SizeConnectionServings | Supplement | createSupplementPayload | updateSupplementPayload | deleteSupplementPayload | SupplementConnection | SupplementAggregator | SupplementAggregatorSum | SupplementAggregatorAvg | SupplementAggregatorMin | SupplementAggregatorMax | SupplementGroupBy | SupplementConnection_id | SupplementConnectionCreatedAt | SupplementConnectionUpdatedAt | SupplementConnectionName | SupplementConnectionPrice | SupplementConnectionDescription | SupplementConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createFlavors(input: createFlavorsInput): createFlavorsPayload
+  updateFlavors(input: updateFlavorsInput): updateFlavorsPayload
+  deleteFlavors(input: deleteFlavorsInput): deleteFlavorsPayload
   createSize(input: createSizeInput): createSizePayload
   updateSize(input: updateSizeInput): updateSizePayload
   deleteSize(input: deleteSizeInput): deleteSizePayload
@@ -128,6 +221,9 @@ type Mutation {
 }
 
 type Query {
+  flavor(id: ID!): Flavors
+  flavors(sort: String, limit: Int, start: Int, where: JSON): [Flavors]
+  flavorsConnection(sort: String, limit: Int, start: Int, where: JSON): FlavorsConnection
   size(id: ID!): Size
   sizes(sort: String, limit: Int, start: Int, where: JSON): [Size]
   sizesConnection(sort: String, limit: Int, start: Int, where: JSON): SizeConnection
@@ -253,8 +349,8 @@ type Supplement {
   price: Float
   description: String
   image: UploadFile
-  flavors: ENUM_SUPPLEMENT_FLAVORS
   sizes(sort: String, limit: Int, start: Int, where: JSON): [Size]
+  flavors(sort: String, limit: Int, start: Int, where: JSON): [Flavors]
 }
 
 type SupplementAggregator {
@@ -302,11 +398,6 @@ type SupplementConnectionDescription {
   connection: SupplementConnection
 }
 
-type SupplementConnectionFlavors {
-  key: String
-  connection: SupplementConnection
-}
-
 type SupplementConnectionImage {
   key: ID
   connection: SupplementConnection
@@ -335,7 +426,6 @@ type SupplementGroupBy {
   price: [SupplementConnectionPrice]
   description: [SupplementConnectionDescription]
   image: [SupplementConnectionImage]
-  flavors: [SupplementConnectionFlavors]
 }
 
 input SupplementInput {
@@ -344,7 +434,16 @@ input SupplementInput {
   description: String
   image: ID
   sizes: [ID]
-  flavors: ENUM_SUPPLEMENT_FLAVORS
+  flavors: [ID]
+}
+
+input updateFlavorsInput {
+  where: InputID
+  data: FlavorsInput
+}
+
+type updateFlavorsPayload {
+  flavor: Flavors
 }
 
 input updateRoleInput {
