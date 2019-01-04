@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { unsetToken } from "../../lib/auth";
+
 
 const Header = (props) => (
     <nav id="header" className="alt">
@@ -11,8 +13,22 @@ const Header = (props) => (
             <a className="logo" href="/">Gympods</a>
             <ul className="rightList">
                 <li className="links cart"><a href="/">Cart(0)</a></li>
-                <li className="links three"><a href="/">Login</a></li>
+                {props.isAuthenticated ? 
+                    <li className="links three">
+                        <Link href="/"><a className="logout" onClick={unsetToken}>Logout</a></Link>
+                    </li>
+                    :
+                    <>
+                        <li className="links three">
+                            <Link href="/signin">                            
+                                <a href="/">Login</a>
+                            </Link>
+                        </li>
+                    </>
+                }
             </ul>
+
+            {console.log(props.isAuthenticated)}
         <style jsx>{`
             #header {
                 background-color: rgba(256,256,256,1.0);

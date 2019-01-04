@@ -39,7 +39,13 @@ const GET_LISTING = gql`
         price
         servings
       }
-      flavors
+      flavors @include(if: true) {
+        Cinammon_Bun
+        Strawberry_Cream
+        Natural_Vanilla
+        Dutch_Chocolate
+        Salted_Caramel
+      }
     }
   }
 `

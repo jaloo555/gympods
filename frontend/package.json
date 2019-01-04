@@ -18,6 +18,8 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "i": "^0.3.6",
+    "js-cookie": "^2.2.0",
+    "jwt-decode": "^2.2.0",
     "next": "^7.0.2",
     "next-apollo": "^2.0.2",
     "npm": "^6.4.1",
@@ -25,7 +27,8 @@
     "react-apollo": "^2.3.3",
     "react-dom": "^16.6.3",
     "reactstrap": "^6.5.0",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "strapi-sdk-javascript": "^0.3.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0"

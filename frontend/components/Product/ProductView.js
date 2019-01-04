@@ -92,15 +92,16 @@ class ImageViewer extends React.Component {
 }
 
 class Selector extends React.Component {
-  state = {
-    selectedPrice: this.props.sizes[0].price,
-    selectedFlavor: this.props.sizes[0].flavors,
-  }
 
   constructor(props) {
     super(props)
     this.handlePriceChange = this.handlePriceChange.bind(this)
     this.handleFlavorChange = this.handleFlavorChange.bind(this)
+    this.state = {
+      // default value as 1st item
+      selectedPrice: this.props.sizes[0].price,
+      selectedFlavor: "",
+    }
   }
 
   handlePriceChange(e) {
@@ -113,15 +114,21 @@ class Selector extends React.Component {
     this.setState({
       selectedFlavor: e.target.value
     })
+
+    console.log(selectedFlavor)
   }
 
   render() {
+    const flavors = this.props.flavors[0]
     const servingSelector = this.props.sizes.map((size)=> (
       <option value={size.price} key={size.servings}>{size.servings} Servings</option>
     ))
-    const flavorSelector = this.props.sizes.map((size)=> (
-      <option>{size.flavors}</option>
+
+    const availableFlavors = Object.keys(flavors).filter(key => flavors[key]==true)
+    const flavorSelector = availableFlavors.map((val) => (
+      <option value={val} key={val}>{val} flavor</option>
     ))
+    
     return (
       <div>
         {/* Price */}
@@ -132,7 +139,7 @@ class Selector extends React.Component {
         {/* Flavor */}
         <select value={this.state.selectedFlavor}
           onChange={this.handleFlavorChange} className="flavorSelector">
-          {servingSelector}
+          {flavorSelector}
         </select>
       </div>
     )
@@ -154,9 +161,7 @@ class ProductView extends React.Component {
           <ImageViewer/>
         </div>
         <div className="selection">
-          <Selector sizes={this.props.supplement.sizes}/>
-          {console.log(this.props.supplement.flavors)}
-          {/* <FlavorSelector flavors={this.props.supplement.flavors}/> */}
+          <Selector sizes={this.props.supplement.sizes} flavors={this.props.supplement.flavors}/>
         </div>
         <style jsx>{`
           .imgView {
