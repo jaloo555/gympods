@@ -12,7 +12,9 @@ const Heading = () => {
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Bai+Jamjuree" rel="stylesheet"/>                    
-      <script src="https://js.stripe.com/v3" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+      <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="M2RmZGM4NTgtMjMyOC00NTQ1LWIzYjYtYjY0ZDRmNWQzMmQwNjM2ODIxODc4NjA3NDU0Njkw"></script>
+      <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
     </Head>
   )
 }

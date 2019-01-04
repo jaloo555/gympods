@@ -6,30 +6,38 @@ import { unsetToken } from "../../lib/auth";
 
 const Header = (props) => (
     <nav id="header" className="alt">
+        <div className="box">
             <ul className="leftList">
                 <li className="links one"><a href="/">We Are</a></li>
                 <li className="links two"><a href="/">Pods</a></li>
             </ul>
+        </div>
+        <div className="box">
             <a className="logo" href="/">Gympods</a>
+        </div>
+        <div className="box">
             <ul className="rightList">
-                <li className="links cart"><a href="/">Cart(0)</a></li>
-                {props.isAuthenticated ? 
-                    <li className="links three">
-                        <Link href="/"><a className="logout" onClick={unsetToken}>Logout</a></Link>
-                    </li>
-                    :
-                    <>
-                        <li className="links three">
-                            <Link href="/signin">                            
-                                <a href="/">Login</a>
-                            </Link>
-                        </li>
-                    </>
-                }
+                <li className="links cart">
+                    <div className="snipcart-summary">
+                        <a href="/checkout" className="snipcart-checkout snipcart-summary">
+                            Cart(<span className="snipcart-total-items"> </span>)
+                        </a>
+                    </div>
+                </li>
+                <li className="links three">
+                    <Link href="/checkout">                            
+                        <a href="#" className="snipcart-user-email snipcart-user-profile">
+                            Login
+                        </a>
+                    </Link>
+                </li>
             </ul>
-
-            {console.log(props.isAuthenticated)}
+        </div>
         <style jsx>{`
+            .container {
+                display: flex;
+                width: 100%;
+            }
             #header {
                 background-color: rgba(256,256,256,1.0);
                 color: black;
@@ -39,6 +47,24 @@ const Header = (props) => (
                 transform: 0.3s;
                 display: flex;
             }
+            .box {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+            .box:first-child > ul {
+                margin-right: auto;
+                justify-content: flex-start;
+            }
+            .box:last-child > ul {
+                margin-left: auto;
+            }
+            .rightList > li {
+                padding-right: 1.5em;
+            }
+            .leftList > li {
+                padding-left: 1.5em;
+            }
             ul {
                 list-style: none;
                 display: flex;
@@ -47,8 +73,6 @@ const Header = (props) => (
             }
             .logo {
                 font-size: 2.2em;
-                justify-item: center;
-                margin: 0 auto;
                 font-family: 'Allerta Stencil', sans-serif;
                 text-transform: uppercase;
                 padding-top: 5px;
@@ -61,12 +85,6 @@ const Header = (props) => (
                 text-transform: uppercase;
                 font-weight: 600;
                 font-style: italic;
-            }
-            .leftList > .links {
-                margin-left: 25px;  
-            }
-            .rightList > .links {
-                margin-right: 20px;  
             }
             // animating underline border
             .links > a {
@@ -85,7 +103,6 @@ const Header = (props) => (
                 -webkit-transition: all 0.3s ease-in-out 0s;
                 transition: all 0.3s ease-in-out 0s;
                 visibility: hidden;
-                
             }
             .cart > a:before {
                 background-color: #00b2f6;

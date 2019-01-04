@@ -18,7 +18,7 @@ export default Page =>
         ...pageProps,
         loggedUser,
         currentUrl: path,
-        isAuthenticated: !!loggedUser
+        isAuthenticated: !loggedUser
       }
     }
 

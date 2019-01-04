@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/snipcartParser",
+      "handler": "Supplement.snipcartParser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/supplements/count",
       "handler": "Supplement.count",
       "config": {

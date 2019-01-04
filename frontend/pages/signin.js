@@ -46,10 +46,13 @@ class Signin extends React.Component {
       data: { email, username, password }
     } = this.state
     const { context } = this.props
-
     this.setState({ loading: true })
-
-    strapiLogin(email, password).then(() => console.log(Cookies.get("user")));
+    strapiLogin(email, password)
+      .then(() => console.log(Cookies.get("user")))
+      .catch((error) => {
+        this.setState({ error: error })
+      })
+    console.log(this.state.error)
   }
 
   render() {

@@ -1,11 +1,11 @@
 import {
   Container,
   Carousel,
-  CarouselCaption,
   CarouselIndicators,
   CarouselItem,
   CarouselControl
 } from 'reactstrap'
+import CartBtn from '../Cart/CartButton'
 
 // sample data
 const sampleItems = [
@@ -92,15 +92,16 @@ class ImageViewer extends React.Component {
 }
 
 class Selector extends React.Component {
-
   constructor(props) {
     super(props)
     this.handlePriceChange = this.handlePriceChange.bind(this)
     this.handleFlavorChange = this.handleFlavorChange.bind(this)
     this.state = {
       // default value as 1st item
+      name: this.props.name,
+      _id: this.props._id,
       selectedPrice: this.props.sizes[0].price,
-      selectedFlavor: "",
+      selectedFlavor: this.props.initialFlavor,
     }
   }
 
@@ -114,18 +115,14 @@ class Selector extends React.Component {
     this.setState({
       selectedFlavor: e.target.value
     })
-
-    console.log(selectedFlavor)
   }
 
   render() {
-    const flavors = this.props.flavors[0]
     const servingSelector = this.props.sizes.map((size)=> (
       <option value={size.price} key={size.servings}>{size.servings} Servings</option>
     ))
 
-    const availableFlavors = Object.keys(flavors).filter(key => flavors[key]==true)
-    const flavorSelector = availableFlavors.map((val) => (
+    const flavorSelector = this.props.flavors.map((val) => (
       <option value={val} key={val}>{val} flavor</option>
     ))
     
@@ -141,6 +138,18 @@ class Selector extends React.Component {
           onChange={this.handleFlavorChange} className="flavorSelector">
           {flavorSelector}
         </select>
+
+        <CartBtn 
+          id={this.state._id}
+          name={this.state.name}
+          price={this.state.price}
+          flavor={this.state.selectedFlavor}
+        />
+
+        {/* debug */}
+        <div>
+          <h2>{this.state.selectedFlavor}, {this.state.selectedPrice}, {this.state.name}</h2>
+        </div>
       </div>
     )
   }
@@ -152,6 +161,8 @@ class ProductView extends React.Component {
   }
 
   render() {
+    const flavors = this.props.supplement.flavors[0]
+    const validFlavors = (Object.keys(flavors).filter(key => flavors[key]==true))
     return (
       <Container fluid>
         <div className="header">
@@ -161,7 +172,11 @@ class ProductView extends React.Component {
           <ImageViewer/>
         </div>
         <div className="selection">
-          <Selector sizes={this.props.supplement.sizes} flavors={this.props.supplement.flavors}/>
+          <Selector initialFlavor={validFlavors[0]} 
+                    name={this.props.supplement.name} 
+                    sizes={this.props.supplement.sizes} 
+                    flavors={validFlavors}
+                    _id={this.props.supplement._id}/>
         </div>
         <style jsx>{`
           .imgView {

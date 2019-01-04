@@ -13,14 +13,12 @@ const Listing = ({id}) => {
         return (
           <Container fluid className="mainContainer">
             <ProductView supplement={supplement}/>
-            {console.log(supplement)}
             {/* gotta change size of carousel */}
             <style jsx >{`
               .mainContainer {
                 padding-top: 65px;
                 background-color: blue;
               }
-
             `}</style>
           </Container>
         )

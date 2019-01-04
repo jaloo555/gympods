@@ -74,5 +74,19 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.supplement.remove(ctx.params);
-  }
+  },
+
+  /**
+   * Snipcart Parser
+   */
+  snipcartParser: async (ctx) => {
+    let products = await strapi.services.product.fetchAll(ctx.query);
+    return products.map(product => {
+        return {
+        id: product._id,
+        price: product.price,
+        url: "https://snipcart-strapi.herokuapp.com/snipcartParser"
+        }
+    })
+}
 };

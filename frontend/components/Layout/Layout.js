@@ -17,16 +17,15 @@ class Layout extends React.Component {
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
-        return {pageProps, isAuthenticated}
+        return {pageProps}
     }
 
     render() {
-        const { isAuthenticated, children } = this.props;
         return (
             <div>
                 <Heading/>
                 <div id="wrapper">
-                    <Header isAuthenticated={isAuthenticated}/>
+                    <Header/>
                     {this.props.children}
                     <Footer />
                 </div>
@@ -35,4 +34,4 @@ class Layout extends React.Component {
     }
 }
 
-export default Layout
+export default defaultPage(Layout)

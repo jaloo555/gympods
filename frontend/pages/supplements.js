@@ -9,9 +9,6 @@ const Supplements = (props) => {
     <Layout>
       <div className="main">
         <Listing id={props.router.query.id}/>
-        <h1>
-          {props.router.query.id}
-        </h1>
       </div>
       <style jsx>
       {`

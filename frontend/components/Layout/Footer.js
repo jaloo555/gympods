@@ -19,6 +19,10 @@ const Footer = (props) => (
             #footer {
                 background-color: white;
                 color: black;
+                // position: fixed;
+                // width: 100%;
+                // bottom: 0;
+                // left: 0;
             }
             .iconContainer {
                 margin-left: auto;
