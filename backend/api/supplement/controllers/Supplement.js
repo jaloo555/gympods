@@ -80,13 +80,30 @@ module.exports = {
    * Snipcart Parser
    */
   snipcartParser: async (ctx) => {
-    let products = await strapi.services.product.fetchAll(ctx.query);
-    return products.map(product => {
-        return {
-        id: product._id,
-        price: product.price,
-        url: "https://snipcart-strapi.herokuapp.com/snipcartParser"
-        }
+    let products = await strapi.services.supplement.fetchAll(ctx.query);
+    return products.map(el => {
+      return {
+        id: el._id,
+        name: el._name,
+        url: "https://localhost:1337/supplements/snipcartParser",
+        price: el.price,
+      }
     })
+    // let newObjArr = []
+    // for (const el in products) {
+    //   let obj1 = {
+    //     id: products[el].id,
+    //     name: products[el].name,
+    //     url: "https://localhost:1337/supplements/snipcartParser",
+    //   }
+    //   for (const key in products[el]['sizes']) {
+    //     let newObjAtt = {
+    //       price: products[el]['sizes'][key].price,
+    //       servings: products[el]['sizes'][key].servings,
+    //     }
+    //     newObjArr.push(Object.assign(newObjAtt, obj1))
+    //   }
+    // }
+    // return newObjArr
 }
 };

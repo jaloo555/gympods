@@ -6,13 +6,14 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap"
+import CartButton from "../Cart/CartButton";
 
 class ProductCard extends React.Component {
   constructor(props) {
     super(props)
   }
   render () {
-    let {name, description, _id, image} = this.props.res
+    let {name, description, _id, image, price} = this.props.res
     return (
       <div>
         <Card body className="text-center" key={_id}>
@@ -32,6 +33,14 @@ class ProductCard extends React.Component {
             >
               <a className="btn btn-primary">View</a>
             </Link>
+            <CartButton 
+              id={_id}
+              name={name}
+              price={price}
+              desc={description}
+            />
+
+            {/* {console.log(this.props.res)} */}
           </div>   
         </Card>
       </div>

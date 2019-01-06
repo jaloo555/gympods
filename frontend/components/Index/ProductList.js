@@ -13,47 +13,40 @@ const ProductList = (
   ) => {
     if (error) return "Error loading supplements"
     if (supplements && supplements.length) {
-      //searchQuery
-      const searchQuery = supplements.filter(query =>
-        query.name.toLowerCase().includes(search)
-      );
-      if (searchQuery.length != 0) {
-        let productCards = searchQuery.map(res=>(
-          <Col sm="4" key={res._id}>
-            <ProductCard key={res._id} res={res}/>
-          </Col>
-        ))
-        return (
-        <div className="main" id="productList">
-          <h1 className="title">Our Products</h1>
-          <Container fluid>
-            <Row>
-              {productCards}
-            </Row>
-          </Container>
-          <style jsx>{`
-            .main {
-              font-family: 'Bai Jamjuree', sans-serif;
-              margin: 40px 20px 20px 20px;
-            }
-            .title {
-              text-align: center;
-              margin: 20px;
-            }
-            .cards {
-              display: flex;
-            }
-          `}
-          </style>
-        </div>
-      )
-    } else {
-      return <h1>No products found</h1>
-    }
+      let productCards = supplements.map(res=>(
+        <Col sm="4" key={res._id}>
+          <ProductCard key={res._id} res={res}/>
+          {console.log(res)}
+        </Col>
+      ))
+
+      return (
+      <div className="main" id="productList">
+        <h1 className="title">Our Products</h1>
+        <Container fluid>
+          <Row>
+            {productCards}
+          </Row>
+        </Container>
+        <style jsx>{`
+          .main {
+            font-family: 'Bai Jamjuree', sans-serif;
+            margin: 40px 20px 20px 20px;
+          }
+          .title {
+            text-align: center;
+            margin: 20px;
+          }
+          .cards {
+            display: flex;
+          }
+        `}
+        </style>
+      </div>
+    )
   }
   return <h1>Loading...</h1>
 }
-
 const query = gql`
   {
     supplements {
@@ -63,6 +56,7 @@ const query = gql`
       image {
         url
       }
+      price
     }
   }
 `

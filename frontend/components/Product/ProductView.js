@@ -125,6 +125,8 @@ class Selector extends React.Component {
     const flavorSelector = this.props.flavors.map((val) => (
       <option value={val} key={val}>{val} flavor</option>
     ))
+
+    const desc = 'Flavor: ' + this.state.selectedFlavor
     
     return (
       <div>
@@ -142,8 +144,9 @@ class Selector extends React.Component {
         <CartBtn 
           id={this.state._id}
           name={this.state.name}
-          price={this.state.price}
-          flavor={this.state.selectedFlavor}
+          price={this.state.selectedPrice}
+          desc={desc}
+          flavors={this.props.flavors}
         />
 
         {/* debug */}

@@ -19,13 +19,13 @@ const Header = (props) => (
             <ul className="rightList">
                 <li className="links cart">
                     <div className="snipcart-summary">
-                        <a href="/checkout" className="snipcart-checkout snipcart-summary">
+                        <a href="/" className="snipcart-checkout snipcart-summary">
                             Cart(<span className="snipcart-total-items"> </span>)
                         </a>
                     </div>
                 </li>
                 <li className="links three">
-                    <Link href="/checkout">                            
+                    <Link href="/">                            
                         <a href="#" className="snipcart-user-email snipcart-user-profile">
                             Login
                         </a>
