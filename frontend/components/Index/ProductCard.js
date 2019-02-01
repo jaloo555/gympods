@@ -13,7 +13,11 @@ class ProductCard extends React.Component {
     super(props)
   }
   render () {
-    let {name, description, _id, image, price} = this.props.res
+    let {name, description, _id, image, price, flavors} = this.props.res
+    var flavorKeys = (Object.keys(flavors[0]))
+    var filteredFlavors = flavorKeys.filter((flavor)=> {
+      return (flavors[0][flavor] == true)
+    })
     return (
       <div>
         <Card body className="text-center" key={_id}>
@@ -27,21 +31,20 @@ class ProductCard extends React.Component {
             <CardText>{description}</CardText>
           </CardBody>
           <div className="card-footer">
-            <Link
+            {/* <Link
               as={`/supplements/${_id}`}
               href={`/supplements?id=${_id}`}
             >
               <a className="btn btn-primary">View</a>
-            </Link>
+            </Link> */}
             <CartButton 
               id={_id}
               name={name}
               price={price}
               desc={description}
+              flavors={filteredFlavors}
             />
-
-            {/* {console.log(this.props.res)} */}
-          </div>   
+          </div>  
         </Card>
       </div>
     )

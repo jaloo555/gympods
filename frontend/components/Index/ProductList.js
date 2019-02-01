@@ -16,7 +16,6 @@ const ProductList = (
       let productCards = supplements.map(res=>(
         <Col sm="4" key={res._id}>
           <ProductCard key={res._id} res={res}/>
-          {console.log(res)}
         </Col>
       ))
 
@@ -57,6 +56,13 @@ const query = gql`
         url
       }
       price
+      flavors {
+        Cinammon_Bun
+        Strawberry_Cream
+        Natural_Vanilla
+        Dutch_Chocolate
+        Salted_Caramel
+      }
     }
   }
 `

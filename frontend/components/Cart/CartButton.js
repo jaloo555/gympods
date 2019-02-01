@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from 'reactstrap'
 
 class CartButton extends React.Component {
   constructor(props) {
@@ -14,18 +15,19 @@ class CartButton extends React.Component {
     this.processStr = this.processStr.bind(this)
   }
 
-  processStr(arr){
+   processStr(arr) {
     let str = ""
-    for (const key in arr) {
-      str = str + "|" + key
-    }
+    arr.forEach((val)=> {
+      val = val.replace(/ /g, "_")
+      str = str + "|" + val
+    })
     return str.substr(1)
   }
 
   render() {
     let flavOptions = this.processStr(this.state.flavors)
     return (
-      <button 
+      <Button 
           className="snipcart-add-item BuyButton"
           data-item-id={this.state.id}
           data-item-name={this.state.name}
@@ -42,9 +44,7 @@ class CartButton extends React.Component {
           data-item-custom2-options="25|50[+15.00]|80[+30.00]"
         >
         ADD TO CART
-
-        {console.log(flavOptions)}
-      </button>
+        </Button>
     )
   }
 }
